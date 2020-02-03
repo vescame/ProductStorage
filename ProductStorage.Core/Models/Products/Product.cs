@@ -1,4 +1,4 @@
-﻿namespace ProductStorage.Models.Products
+﻿namespace ProductStorage.Core.Models.Products
 {
     public class Product
     {

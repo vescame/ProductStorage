@@ -1,4 +1,4 @@
-﻿using ProductStorage.Models.Products;
+﻿using ProductStorage.Core.Models.Products;
 using System.Web.Mvc;
 
 namespace ProductStorage.Controllers

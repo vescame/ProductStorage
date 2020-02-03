@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductStorage.Core\ProductStorage.Core.csproj" />
+    <ProjectReference Include="..\ProductStorage.Data\ProductStorage.Data.csproj" />
+  </ItemGroup>
+
+</Project>
