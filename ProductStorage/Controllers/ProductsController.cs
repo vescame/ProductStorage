@@ -1,15 +1,33 @@
-﻿using ProductStorage.Core.Models.Products;
+﻿using ProductStorage.Core;
+using ProductStorage.Core.Models.Products;
+using ProductStorage.Core.Services.Products;
+using ProductStorage.Data;
+using ProductStorage.Services.Products;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ProductStorage.Controllers
 {
     public class ProductsController : Controller
     {
+        private readonly StorageContextMySql _context = new StorageContextMySql();
+        private readonly IProductService _service;
+        private readonly IContextWorker _worker;
+        
+
+        public ProductsController()
+        {
+            _worker = new ContextWorker(_context);
+            _service = new ProductService(_worker);
+        }
+
         // GET: Products
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var products = await _service.GetAll();
+            
+            return View(products);
         }
 
         // GET: Products/Create
@@ -27,6 +45,8 @@ namespace ProductStorage.Controllers
             {
                 return View();
             }
+
+            _service.Create(product);
 
             return RedirectToAction("Index");
         }

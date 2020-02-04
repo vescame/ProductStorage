@@ -131,6 +131,10 @@
       <Project>{a66b53aa-2d9f-4938-ad93-604e4b43812a}</Project>
       <Name>ProductStorage.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProductStorage.Data\ProductStorage.Data.csproj">
+      <Project>{75A04BB5-9648-4AB2-B2DD-32C9C6EE3AC7}</Project>
+      <Name>ProductStorage.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProductStorage.Services\ProductStorage.Services.csproj">
       <Project>{9765e18c-1e1f-4da2-8d2e-7858c8d15d05}</Project>
       <Name>ProductStorage.Services</Name>

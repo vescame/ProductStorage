@@ -32,31 +32,21 @@ namespace ProductStorage.Data.Repositories
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _context.Set<TEntity>().Where(predicate).ToListAsync();
         }
 
-        public async Task AddAsync(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                _context.Set<TEntity>().Add(entity);
-                return entity;
-            });
-
-            return;
+            _context.Set<TEntity>().Add(entity);
+            return entity;
         }
 
-        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                _context.Set<TEntity>().AddRange(entities);
-                return entities;
-            });
-
-            return;
+            _context.Set<TEntity>().AddRange(entities);
+            return entities;
         }
 
         public void Remove(TEntity entity)

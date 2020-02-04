@@ -4,11 +4,11 @@ using System.Data.Entity;
 
 namespace ProductStorage.Data
 {
-    class StorageContextMySql : DbContext
+    public class StorageContextMySql : DbContext
     {
         public DbSet<Product> Products { get; set; }
 
-        protected StorageContextMySql() : base("StorageConnString")
+        public StorageContextMySql() : base("StorageConnString")
         {
         }
     }

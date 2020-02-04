@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProductStorage.Core.Repositories
+namespace ProductStorage.Core.Repositories.Products
 {
-    interface IProductRepository : IRepository<Product>
+    public interface IProductRepository : IRepository<Product>
     {
         Task<IEnumerable<Product>> GetAllByCategory(string category);
     }
