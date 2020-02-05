@@ -24,9 +24,20 @@ namespace ProductStorage.Services.Products
             return product;
         }
 
-        public Task<Product> Delete(long id)
+        public async Task<Product> Delete(long id)
         {
-            throw new NotImplementedException();
+            Product p;
+            try
+            {
+                p = await _worker.Products.GetByIdAsync(id);
+                _worker.Products.Remove(p);
+                await _worker.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("ProductNotFoundException");
+            }
+            return p;
         }
 
         public async Task<IEnumerable<Product>> GetAll()
@@ -34,14 +45,26 @@ namespace ProductStorage.Services.Products
             return await _worker.Products.GetAllAsync();
         }
 
-        public Task<Product> GetById(long id)
+        public async Task<Product> GetById(long id)
         {
-            throw new NotImplementedException();
+            return await _worker.Products.GetByIdAsync(id);
         }
 
-        public Task<Product> Update(Product product)
+        public async Task<Product> Update(Product product)
         {
-            throw new NotImplementedException();
+            Product p;
+            try
+            {
+                p = await _worker.Products.GetByIdAsync(product.Id);
+                p = product;
+                await _worker.CommitAsync();
+            }
+            catch (Exception)
+            {
+                throw new Exception("ProductNotUpdatableException");
+            }
+
+            return p;
         }
     }
 }
