@@ -12,9 +12,9 @@ namespace ProductStorage.Services.Products
     {
         private readonly IContextWorker _worker;
 
-        public ProductService(IContextWorker worker)
+        public ProductService()
         {
-            _worker = worker;
+            _worker = new ContextWorker();
         }
 
         public async Task<Product> Create(Product product)

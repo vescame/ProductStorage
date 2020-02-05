@@ -13,9 +13,9 @@ namespace ProductStorage.Data
         public IProductRepository Products
             => _productRepository = _productRepository ?? new ProductRepository(_storageContext);
 
-        public ContextWorker(StorageContextMySql storageContext)
+        public ContextWorker()
         {
-            _storageContext = storageContext;
+            _storageContext = new StorageContextMySql();
         }
 
         public async Task<int> CommitAsync()

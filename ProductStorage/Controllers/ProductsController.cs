@@ -1,7 +1,5 @@
-﻿using ProductStorage.Core;
-using ProductStorage.Core.Models.Products;
+﻿using ProductStorage.Core.Models.Products;
 using ProductStorage.Core.Services.Products;
-using ProductStorage.Data;
 using ProductStorage.Services.Products;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -10,15 +8,11 @@ namespace ProductStorage.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly StorageContextMySql _context = new StorageContextMySql();
         private readonly IProductService _service;
-        private readonly IContextWorker _worker;
-        
 
         public ProductsController()
         {
-            _worker = new ContextWorker(_context);
-            _service = new ProductService(_worker);
+            _service = new ProductService();
         }
 
         // GET: Products
