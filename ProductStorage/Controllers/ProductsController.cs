@@ -45,6 +45,12 @@ namespace ProductStorage.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
         // GET: Products/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)

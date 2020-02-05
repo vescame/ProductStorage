@@ -113,6 +113,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -130,6 +133,7 @@
     <ProjectReference Include="..\ProductStorage.Core\ProductStorage.Core.csproj">
       <Project>{a66b53aa-2d9f-4938-ad93-604e4b43812a}</Project>
       <Name>ProductStorage.Core</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
     <ProjectReference Include="..\ProductStorage.Data\ProductStorage.Data.csproj">
       <Project>{75A04BB5-9648-4AB2-B2DD-32C9C6EE3AC7}</Project>
