@@ -3,6 +3,7 @@ using ProductStorage.Core.Services.Products;
 using ProductStorage.Services.Products;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace ProductStorage.Controllers
 {
@@ -46,16 +47,22 @@ namespace ProductStorage.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(int id)
+        public async Task<ViewResult> Details(int id)
         {
-            return View();
+            return await TryGetProductById(id);
         }
 
         // GET: Products/Edit/5
         [HttpGet]
-        public ActionResult Edit(int id)
+        public async Task<ViewResult> Edit(int id)
         {
-            return View();
+            return await TryGetProductById(id);
+        }
+
+        public async Task<ViewResult> TryGetProductById(long id)
+        {
+            Product p = await _service.GetById(id);
+            return p != null ? View(p) : View("ProductNotFound");
         }
 
         // POST: Products/Edit/5
@@ -64,7 +71,7 @@ namespace ProductStorage.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(ModelState);
             }
 
             return RedirectToAction("Index");
@@ -72,9 +79,9 @@ namespace ProductStorage.Controllers
 
         // GET: Products/Delete/5
         [HttpGet]
-        public ActionResult Delete(int id)
+        public async Task<ViewResult> Delete(long id)
         {
-            return View();
+            return await TryGetProductById(id);
         }
 
         // POST: Products/Delete/5
